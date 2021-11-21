@@ -1,0 +1,37 @@
+package com.geekster;
+
+import java.util.Stack;
+
+public class parenthesesUsingStack {
+	public static void valid_paren(String s) {
+        Stack<Character> stk = new Stack<Character>();
+        for(char st: s.toCharArray()) {
+        	if (st == '(' || st == '{' || st == '[') {
+                stk.push(st);
+            }
+            else {if(stk.empty()) {
+                System.out.println(s + " contains invalid parentheses.");
+                return;
+            }else{char top = (Character) stk.peek();
+            if(st == ')' && top == '(' || st == '}' && top == '{' || st == ']' && top == '['){
+                stk.pop();
+            }else{
+                System.out.println(s + " contains invalid parentheses.");
+                return;
+            }
+        }
+    }
+}
+        if(stk.empty()) {
+        	System.out.println(s + " contains valid parentheses.");
+        }
+        else{
+        	System.out.println(s + " contains invalid parentheses.");
+        }
+}	
+	public static void main(String args[]) {
+		 String s1= "{{}}()[(]";
+		valid_paren(s1);
+	}
+
+}
